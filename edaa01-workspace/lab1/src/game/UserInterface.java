@@ -2,9 +2,9 @@ package game;
 
 import javax.swing.JOptionPane;
 
-public class UserInterface {
+class UserInterface {
     /** Visar en dialogruta med texten msg. */
-    public static void printMessage(String msg) {
+    static void printMessage(String msg) {
         // din egen kod
         JOptionPane.showMessageDialog(null, msg);
 
@@ -17,7 +17,7 @@ public class UserInterface {
      * Om användaren skriver in ett positivt heltal som inte
      * är 1 eller 2 returneras -3
      */
-    public static int askForInt(String msg) {
+    static int askForInt(String msg) {
         // din egen kod
         String inputString = JOptionPane.showInputDialog(null, msg);
         int parsedInput;
@@ -34,5 +34,13 @@ public class UserInterface {
         } catch (Exception e) {
             return -1;
         }
+    }
+
+    static String askForString(String msg) {
+        String inputString = JOptionPane.showInputDialog(null, msg);
+        if (inputString == null) {
+            return null;
+        }
+        return inputString;
     }
 }

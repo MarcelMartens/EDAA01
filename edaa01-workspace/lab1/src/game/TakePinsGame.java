@@ -1,26 +1,22 @@
 package game;
 
-public class TakePinsGame {
+import static game.UserInterface.printMessage;
 
-  public static void main(String[] args) {
+public class TakePinsGame {
+  static void main(String[] args) {
+    System.out.println("hejhej");
+    boolean proceed = true;
     Board b = new Board(20);
     HumanPlayer hp = new HumanPlayer("human player");
     ComputerPlayer cp = new ComputerPlayer("Computer Player");
-    // UserInterface.printMessage("hejhejhej");
-    int input = UserInterface.askForInt("skriv ett positivt heltal mellan 1 och 2");
-    int chosenInt = 0;
-    if (input == -1) {
-      UserInterface.printMessage("kan ej tolkas som positivt heltal");
+    printMessage("Welcome to\nStick Game 2: Electric bogaloo");
+
+    while (proceed) {
+      break;
     }
-    if (input == -2) {
-      UserInterface.printMessage("Användaren tryckte på avbryt");
-    }
-    if (input == -3) {
-      UserInterface.printMessage("Angivet tal är inte 1 eller 2");
-    } else {
-      chosenInt = input;
-    }
-    b.takePins(chosenInt);
-    UserInterface.printMessage("total number of pins:" + Integer.toString(b.getTotPins()));
+  }
+
+  private int takePins(Board board, Player player) {
+    return player.takePins(board);
   }
 }

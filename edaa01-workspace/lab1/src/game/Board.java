@@ -1,20 +1,21 @@
 package game;
 
-public class Board {
+class Board {
 	private int totPins;
 
-	public Board(int nbrOfPins) {
-		totPins = nbrOfPins;
+	Board(int nbrOfPins) {
+		this.totPins = nbrOfPins;
 	}
 
-	public void setUp(int i) {
+	void setUp(int nbrOfPins) {
+		this.totPins = nbrOfPins;
 	}
 
-	public void takePins(int pinsToTake) {
+	void takePins(int pinsToTake) {
 		this.totPins -= pinsToTake;
 	}
 
-	public int getTotPins() {
+	int getTotPins() {
 		return this.totPins;
 	}
 
