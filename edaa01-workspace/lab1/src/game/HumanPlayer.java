@@ -27,7 +27,7 @@ class HumanPlayer extends Player {
      */
     int getInt(Board board) {
         int input = UserInterface
-                .askForInt("Input a positive integer, 1 eller 2\nRemaining pins: " + board.getTotPins());
+                .askForInt("Input a positive integer, 1 or 2\nRemaining pins: " + board.getTotPins());
         if (input == -1) {
             UserInterface.printMessage("input cannot be parsed as a positive integer");
         } else if (input == -2) {

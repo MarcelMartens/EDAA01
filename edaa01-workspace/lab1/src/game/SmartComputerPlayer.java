@@ -1,18 +1,20 @@
 package game;
 
+/** subklass till Player, en bättre version av ComputerPlayer */
 public class SmartComputerPlayer extends Player {
     SmartComputerPlayer(String ID) {
         super(ID);
     }
 
     /**
-     * väljer så att antalet alltid blir jämnt, förutom om totalt antal är 3.
-     * Om totalt antal pins är 3 väljer den alltid att ta 2 st
+     * metod för att ta pins med smartare val än att ta slumpmässiga tal.
+     * tar 1 om totala antalet pins minus 1 är jämnt delbart med 3,
+     * om det ej stämmer tar SmartComputerPlayer alltid 2.
      */
     int takePins(Board board) {
         int totPins = board.getTotPins();
         int nbrOfPins;
-        if ((totPins - 1) == 3) {
+        if (((totPins - 1) % 3) == 0) {
             nbrOfPins = 1;
         } else {
             nbrOfPins = 2;
