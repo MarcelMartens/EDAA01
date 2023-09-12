@@ -2,7 +2,6 @@ package game;
 
 // imports för att slippa skriva paket+klass + libs som behövs
 import static game.UserInterface.printMessage;
-import static game.UserInterface.askForBool;
 import java.util.Random;
 
 /**
@@ -18,14 +17,9 @@ public class TakePinsGame {
     Board b = new Board(new Random().nextInt(15) + 10);
     printMessage("Welcome to:\nStick Game 2: Electric bogaloo\n The one and only rule is: dont take the last pin!");
 
-    // Kollar om användaren vill spela mot smart dator eller normal dator
-    boolean smartOrNormal = !askForBool("Do you want to play against the smart computer or the random computer?",
-        "Smart Computer",
-        "Normal Computer");
-
     // skapar spelar-objekt och skriver ut att spelet har startat + antalet pins i
     // spelet
-    ComputerPlayer cp = new ComputerPlayer("CP", smartOrNormal);
+    ComputerPlayer cp = new ComputerPlayer("CP");
     HumanPlayer hp = new HumanPlayer("HP");
     printMessage("The game has started!\nThe amount of pins is" + b.getTotPins() + "\nGood Luck!");
 
@@ -36,7 +30,7 @@ public class TakePinsGame {
       printMessage("you took " + hp.takePins(b) + " Pins\n" + b.getTotPins() +
           " pins remaining");
       if (b.getTotPins() <= 0) {
-        printMessage("You took the last pin\nComputer Won!!!");
+        printMessage("You took the last pin\nYou Won!!!");
         proceed = retryReset(b);
         continue;
       }
@@ -44,7 +38,7 @@ public class TakePinsGame {
       printMessage("the computer took " + cp.takePins(b) + " Pins\n" +
           b.getTotPins() + " pins remaining");
       if (b.getTotPins() <= 0) {
-        printMessage("The computer took the last pin\nYou Won!!!");
+        printMessage("The computer took the last pin\nYou Lost!!!");
         proceed = retryReset(b);
         continue;
       }
