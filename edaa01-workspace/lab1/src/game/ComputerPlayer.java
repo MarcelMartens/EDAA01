@@ -14,7 +14,7 @@ class ComputerPlayer extends Player {
     /**
      * Väljer slumpmässigt tal 1 eller 2 och callar board.takePins med den summan
      */
-    int normalTakePins(Board board) {
+    int takePins(Board board) {
         Random r = new Random();
         int nbrOfPins = r.nextInt(2) + 1;
         board.takePins(nbrOfPins);

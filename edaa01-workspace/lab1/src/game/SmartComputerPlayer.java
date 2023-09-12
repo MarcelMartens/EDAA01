@@ -16,6 +16,8 @@ public class SmartComputerPlayer extends Player {
         int nbrOfPins;
         if (((totPins - 1) % 3) == 0) {
             nbrOfPins = 1;
+        } else if ((totPins % 3) == 0) {
+            nbrOfPins = 1;
         } else {
             nbrOfPins = 2;
         }

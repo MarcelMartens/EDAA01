@@ -47,6 +47,8 @@ class UserInterface {
      * användaren skriver något som inte kan tolkas som ett positivt heltal ska -1
      * returneras. Om användaren klickar på "Avbryt" ska -2 returneras.
      */
+    // todox enlarge font size and window size
+    // todo add more intuitive way of choosing number of pins to take
     static int askForInt(String msg) {
         UIManager.put("OptionPane.minimumSize", new Dimension(500, 500));
         UIManager.put("OptionPane.messageFont", new Font("System", Font.PLAIN, 20));

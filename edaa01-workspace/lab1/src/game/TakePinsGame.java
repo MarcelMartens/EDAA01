@@ -8,13 +8,14 @@ import java.util.Random;
 /**
  * Huvudklass för spelet. Innehåller main-metod som kör och hanterar spellogik
  * De flesta klasser som används har ingen vald synlighet så att deras metoder
- * ej kan anropas från utanför detta paketet.
+ * ej kan anropas från metoder utanför detta paketet.
  */
+// todox add smartComputerPlayer
+// todo add way of choosing smart or normal computer at start of game
 public class TakePinsGame {
   public static void main(String[] args) {
 
     // skapar board-objekt och visar välkommsttext
-    // todo lägg till smart dator
     Board b = new Board(new Random().nextInt(15) + 8);
     printMessage(
         "Welcome to:\nStick Game 2: Electric bogaloo\n \n The one and only rule is: whoever takes the last pin wins!");
@@ -27,6 +28,7 @@ public class TakePinsGame {
     HumanPlayer hp = new HumanPlayer("HP");
 
     // huvudspelloop, körs tills användaren väljer att ej fortsätta
+    // todox add randomly chosen starting positions
     while (initValues[0]) {
       if (initValues[1]) {
         printMessage("the computer took " + cp.takePins(b) + " Pins\n \n" + b.getTotPins() +
@@ -65,7 +67,8 @@ public class TakePinsGame {
    * Returnar även en slumpmässigt vald boolean som väljer vilken spelare som
    * börjar först
    */
-  private static boolean[] retryReset(Board board) {
+  // todox fix so method can be used at init
+  static boolean[] retryReset(Board board) {
     while (true) {
 
       // Frågar om de vill avsluta eller ej och sätter initValues[0] till true/false
