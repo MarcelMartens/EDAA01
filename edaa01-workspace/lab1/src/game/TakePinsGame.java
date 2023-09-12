@@ -14,70 +14,85 @@ public class TakePinsGame {
   public static void main(String[] args) {
 
     // skapar board-objekt och visar välkommsttext
-    boolean proceed = true;
-    Board b = new Board(new Random().nextInt(15) + 10);
-    printMessage("Welcome to:\nStick Game 2: Electric bogaloo\n The one and only rule is: dont take the last pin!");
-
-    // Kollar om användaren vill spela mot smart dator eller normal dator
-    boolean smartOrNormal = !askForBool("Do you want to play against the smart computer or the random computer?",
-        "Smart Computer",
-        "Normal Computer");
+    // todo lägg till smart dator
+    Board b = new Board(new Random().nextInt(15) + 8);
+    printMessage(
+        "Welcome to:\nStick Game 2: Electric bogaloo\n \n The one and only rule is: whoever takes the last pin wins!");
+    boolean[] initValues = retryReset(b);
 
     // skapar spelar-objekt och skriver ut att spelet har startat + antalet pins i
     // spelet
-    ComputerPlayer cp = new ComputerPlayer("CP", smartOrNormal);
+    // ComputerPlayer cp = new ComputerPlayer("CP");
+    SmartComputerPlayer cp = new SmartComputerPlayer("SCP");
     HumanPlayer hp = new HumanPlayer("HP");
-    printMessage("The game has started!\nThe amount of pins is" + b.getTotPins() + "\nGood Luck!");
 
     // huvudspelloop, körs tills användaren väljer att ej fortsätta
-    while (proceed) {
+    while (initValues[0]) {
+      if (initValues[1]) {
+        printMessage("the computer took " + cp.takePins(b) + " Pins\n \n" + b.getTotPins() +
+            " pins remaining");
+        initValues[1] = false;
+      }
 
       // Kör mänskliga spelarens runda, kollar efter om antal pins är < 0
       printMessage("you took " + hp.takePins(b) + " Pins\n" + b.getTotPins() +
           " pins remaining");
       if (b.getTotPins() <= 0) {
-        printMessage("You took the last pin\nComputer Won!!!");
-        proceed = retryReset(b);
+        printMessage("You took the last pin\n \nYou Won!!!");
+        initValues = retryReset(b);
         continue;
       }
       // Kör datorns runda, kollar efter om antal pins är < 0
       printMessage("the computer took " + cp.takePins(b) + " Pins\n" +
           b.getTotPins() + " pins remaining");
       if (b.getTotPins() <= 0) {
-        printMessage("The computer took the last pin\nYou Won!!!");
-        proceed = retryReset(b);
+        printMessage("The computer took the last pin\n \nYou Lost!!!");
+        initValues = retryReset(b);
         continue;
       }
     }
   }
 
   /**
-   * Metod för att fråga användare om de vill fortsätta spelet eller avsluta.
-   * Om yesOption är vald frågas användare om hur många pins de vill ha i nya
+   * Metod för att fråga användare om de vill fortsätta spelet eller avsluta
+   * samt att resetta bordet och välja antal pins och vem som börjar.
+   * Om yesOption är vald väljs slumpmässigt hur många pins det ska vara i nya
    * spelet
-   * och true returneras
-   * Om noOption är vald avslutas spelet och false returneras
+   * och true returneras som första element i vektorn initValues
+   * Om noOption är vald avslutas spelet och false returneras som första element
    * Om yesOption först väljs och inputen sedan inte är ett positivt heltal
    * körs loopen om från början och låter användaren välja igen.
+   * Returnar även en slumpmässigt vald boolean som väljer vilken spelare som
+   * börjar först
    */
-  private static boolean retryReset(Board board) {
+  private static boolean[] retryReset(Board board) {
     while (true) {
 
-      // Frågar om de vill avsluta eller ej och sätter proceed till true/false
-      boolean proceed = askForBool("Do you want to play another round?",
-          "Continue", "End game");
+      // Frågar om de vill avsluta eller ej och sätter initValues[0] till true/false
+      boolean proceed = askForBool("Do you want to start a new round?",
+          "New Round", "End game");
       if (!(proceed)) {
         printMessage("Ending game, thanks for playing!");
-        return proceed;
+        boolean[] initValues = { proceed, false };
+        return initValues;
       }
 
       // om spelaren vill fortsätta väljs nytt antal pins mellan 10 och 25
       // Spelet startas sedan om på rätt antal pins och meddelar användaren
+      // om antal pins och vem som börjar
       Random r = new Random();
+      boolean computerBegins = r.nextBoolean();
+      String whoBegins;
+      boolean[] initValues = { proceed, computerBegins };
       int nbrOfPins = r.nextInt(15) + 10;
       board.setUp(nbrOfPins);
-      printMessage("Created new game with " + nbrOfPins + " pins!\nGood luck!");
-      return proceed;
+      if (computerBegins) {
+        whoBegins = "Computer has the first turn";
+      } else {
+        whoBegins = "You have the first turn";
+      }
+      printMessage("Created new game with " + nbrOfPins + " pins!\n \n" + whoBegins + ", Good luck!");
+      return initValues;
     }
   }
 }
