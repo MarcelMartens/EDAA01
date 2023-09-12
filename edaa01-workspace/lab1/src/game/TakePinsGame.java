@@ -2,6 +2,7 @@ package game;
 
 // imports för att slippa skriva paket+klass + libs som behövs
 import static game.UserInterface.printMessage;
+import static game.UserInterface.askForBool;
 import java.util.Random;
 
 /**
@@ -13,13 +14,15 @@ public class TakePinsGame {
   public static void main(String[] args) {
 
     // skapar board-objekt och visar välkommsttext
+    // todo lägg till smart dator
     boolean proceed = true;
     Board b = new Board(new Random().nextInt(15) + 10);
     printMessage("Welcome to:\nStick Game 2: Electric bogaloo\n The one and only rule is: dont take the last pin!");
 
     // skapar spelar-objekt och skriver ut att spelet har startat + antalet pins i
     // spelet
-    ComputerPlayer cp = new ComputerPlayer("CP");
+    // ComputerPlayer cp = new ComputerPlayer("CP");
+    SmartComputerPlayer cp = new SmartComputerPlayer("SCP");
     HumanPlayer hp = new HumanPlayer("HP");
     printMessage("The game has started!\nThe amount of pins is" + b.getTotPins() + "\nGood Luck!");
 
