@@ -11,7 +11,7 @@ public class Scheduler {
 	 * i vektorn machines.
 	 */
 
-	// fix tog bort Machine[] konstruktor och lade till this.
+	// fixed tog bort Machine[] konstruktor och lade till this.
 	public Scheduler(Machine[] machineArray) {
 		this.machines = machineArray;
 	}
@@ -31,7 +31,7 @@ public class Scheduler {
 	}
 
 	/** Fördelar jobben i listan jobs på maskinerna. */
-	// fix ändrade plats på j1 och j2 så att ordningen blir rätt.
+	// fixed ändrade plats på j1 och j2 så att ordningen blir rätt.
 	public void makeSchedule(List<Job> jobs) {
 		List<Job> tempJobList = new ArrayList<>(jobs);
 		tempJobList.sort((j1, j2) -> j2.getTime() - j1.getTime());
@@ -49,7 +49,7 @@ public class Scheduler {
 	}
 
 	/** Skriver ut maskinernas scheman. */
-	// fix ändrade <= till < så att den ej letar efter index högre än 3
+	// fixed ändrade <= till < så att den ej letar efter index högre än 3
 	public void printSchedule() {
 		for (int i = 0; i < machines.length; i++) {
 			System.out.println(machines[i]);

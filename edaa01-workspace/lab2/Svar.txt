@@ -1,3 +1,5 @@
+"todo-tree.regex.regex": "(//|#|<!--|/\\*|^|^[ \t]*(-|\\d+.))\\s*($TAGS)"
+
 F2
 4. 
     I sorteringen av jobb var j1 och j2 i fel ordning 
@@ -18,22 +20,23 @@ F3
 
 F4
 a. 
-    * 200st
+    * 20st
     * Om ej ett index är speciferat i add(int index, E element) kommer den alltid
         att defaulta till sista index + 1. Då ska alla element vara i ordning
 b. 
     * En hashset tillåter inte dubbletter iom att hashen genereras av innehållet.
         Därmed kommer varje tal bara läggas till en gång i listan och andra
         add() kommer inte att ha någon effekt. 
-        100 rader skrivs ut.
+        10 rader skrivs ut.
     * Hashset tar ej hänsyn till när/var något läggs till utan referarar 
         bara mot ett specifikt hash för varje element. 
         Ordningen av talen kommer därför inte vara i ordning
 c. 
     * <String, int>
     * get() returnerar värdet för den key man använder som parameter
-        Den kommer därför skriva ut "12" eftersom key-value paret är
-        "Albatross" - 12
+        När albatross läggs in igen kommer gamla k-v paret skrivas över
+        Den kommer därför skriva ut "7" eftersom key-value paret är
+        "albatross" - 7
 d. 
     Det finns två "contains"-metoder. En för keys och en för values. 
     För att kolla om en key förekommer används containsKey()

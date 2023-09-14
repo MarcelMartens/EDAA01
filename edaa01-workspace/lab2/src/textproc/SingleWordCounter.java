@@ -9,9 +9,10 @@ public class SingleWordCounter implements TextProcessor {
 		n = 0;
 	}
 
+	// fixed ändrade == operanden till String.equals(), == kollar efter samma objekt
 	public void process(String w) {
-		if (w == word) {
-			n++;
+		if (w.equals(this.word)) {
+			this.n++;
 		}
 	}
 

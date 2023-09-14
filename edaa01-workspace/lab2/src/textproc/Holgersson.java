@@ -2,6 +2,8 @@ package textproc;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Holgersson {
@@ -11,22 +13,31 @@ public class Holgersson {
 			"södermanland", "uppland", "värmland", "västerbotten", "västergötland", "västmanland", "ångermanland",
 			"öland", "östergötland" };
 
-	public static void main(String[] args) throws FileNotFoundException {
-		
-		TextProcessor p = new SingleWordCounter("nils");
+	// todox fixa så lista av TextProcessor-objekt funkar som input
+	// todox varje gång ett nytt ord läses in ska process anropas på alla i listan
+	// todo ändra sista TextProcessor objektet till multi och lägg i landskap
 
-		Scanner s = new Scanner(new File("nilsholg.txt"));
+	public static void main(String[] args) throws FileNotFoundException {
+		ArrayList<TextProcessor> pList = new ArrayList<>(
+				Arrays.asList(
+						new SingleWordCounter("nils"),
+						new SingleWordCounter("norge"),
+						new SingleWordCounter("borta")));
+
+		Scanner s = new Scanner(new File("edaa01-workspace/lab2/nilsholg.txt"));
 		s.findWithinHorizon("\uFEFF", 1);
 		s.useDelimiter("(\\s|,|\\.|:|;|!|\\?|'|\\\")+"); // se handledning
 
 		while (s.hasNext()) {
 			String word = s.next().toLowerCase();
-
-			p.process(word);
+			pList.forEach((p) -> {
+				p.process(word);
+			});
 		}
 
 		s.close();
-
-		p.report();
+		pList.forEach((p) -> {
+			p.report();
+		});
 	}
 }
