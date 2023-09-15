@@ -57,7 +57,7 @@ public class Holgersson {
 		});
 		System.out.println("total runtime: " + ((System.nanoTime() - t0) / (1000000)) + "ms");
 	}
-	// note runtimes:293,285,297,284,287 -> Median:287ms
+	// note runtimes: 333,319,301,306,416 -> Median: 319ms
 
 	@Deprecated
 	private static float calculateRunTime(int nbrOfTimes) {

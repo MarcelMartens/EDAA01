@@ -1,7 +1,7 @@
 package textproc;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 // todox konstruktor ska ta en String-vektor som parameter
 // todox endast ett attribut av typen map (key-value par)
@@ -10,7 +10,7 @@ import java.util.Map;
 // todox report ska skriva ut alla keys och resp. value 
 public class MultiWordCounter implements TextProcessor {
 
-    private Map<String, Integer> m = new HashMap<String, Integer>();
+    private Map<String, Integer> m = new TreeMap<String, Integer>();
 
     MultiWordCounter(String[] stringArray) {
         for (String string : stringArray) {
