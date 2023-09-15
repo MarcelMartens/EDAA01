@@ -24,8 +24,8 @@ public class TakePinsGame {
     // skapar spelar-objekt och skriver ut att spelet har startat + antalet pins i
     // spelet
     // ComputerPlayer cp = new ComputerPlayer("CP");
-    SmartComputerPlayer cp = new SmartComputerPlayer("SCP");
-    HumanPlayer hp = new HumanPlayer("HP");
+    Player cp = new SmartComputerPlayer("SCP");
+    Player hp = new HumanPlayer("HP");
 
     // huvudspelloop, körs tills användaren väljer att ej fortsätta
     // todox add randomly chosen starting positions
@@ -36,7 +36,8 @@ public class TakePinsGame {
         initValues[1] = false;
       }
 
-      // fix om det blir -1 totala pins kan vi köra en check för <= 0 pins innan
+      // note om -1 totala pins är ett problem kan en check på totala mängden är <= 0
+      // note innan man kör takePins och vänta med att printa antalet pins kvar
       // Kör mänskliga spelarens runda, kollar efter om antal pins är < 0
       printMessage("you took " + hp.takePins(b) + " Pins\n" + b.getTotPins() +
           " pins remaining");

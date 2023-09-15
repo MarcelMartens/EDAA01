@@ -14,8 +14,8 @@ public class SmartVsNormal {
         int normalWins = 0;
         int smartWins = 0;
         int nbrOfGames = 0;
-        int randomBound = 15;
-        int lowBoundLimit = 10;
+        int randomBound = 50;
+        int lowBoundLimit = 50;
         ArrayList<Integer> gameDetails = new ArrayList<>();
         Random r = new Random();
         Board b = new Board(0);
@@ -24,7 +24,7 @@ public class SmartVsNormal {
         // körs i antal gånger med två matcher varje loop så båda spelare får börja
         // ökar antalet vinster för respektive spelare varje vinst
         // Om smarta förlorar skrivs rundans detaljer ut i konsollen
-        for (int i = 1; i <= 500000; i++) {
+        for (int i = 1; i <= 50000000; i++) {
 
             // sparar antalet loops för att kunna räkna ut procent senare
             nbrOfGames = i;
