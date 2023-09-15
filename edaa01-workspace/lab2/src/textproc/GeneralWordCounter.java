@@ -8,14 +8,18 @@ import java.util.Set;
 
 public class GeneralWordCounter implements TextProcessor {
 
+    // note deklarerar en Map och ett Set för att spara ord
     private Map<String, Integer> m = new HashMap<String, Integer>();
     private Set<String> s;
 
+    // note konstruktor
     GeneralWordCounter(Set<String> stopWordSet) {
         this.s = stopWordSet;
     }
 
     @Override
+    // note om ordet w finns i s returnar funktionen (läggs ej till i m)
+    // note lägger till, i m, (w:0) om w ej redan finns, annars (w:värde+1)
     public void process(String w) {
         if (s.contains(w)) {
             return;
@@ -28,6 +32,10 @@ public class GeneralWordCounter implements TextProcessor {
     }
 
     @Override
+    // note gör om m till en lista av Map.Entry's och sorterar de
+    // note sorteras i första hand på antal förekomster och alfabetiskt om lika
+    // note Printar sedan ut de 5 mest förekommande orden, om index<5
+    // note printar den ut "index" antal st
     public void report() {
         Set<Map.Entry<String, Integer>> wordSet = m.entrySet();
         List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(wordSet);

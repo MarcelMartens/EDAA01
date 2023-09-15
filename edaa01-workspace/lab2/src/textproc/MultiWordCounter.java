@@ -3,23 +3,21 @@ package textproc;
 import java.util.HashMap;
 import java.util.Map;
 
-// todox konstruktor ska ta en String-vektor som parameter
-// todox endast ett attribut av typen map (key-value par)
-// todox atributet ska ha typen map men objektet ska ha typen hashmap
-// todox "hashmap" ska bara förekomma 1 gång vid deklarering (förutom import)
-// todox report ska skriva ut alla keys och resp. value 
 public class MultiWordCounter implements TextProcessor {
 
+    // note skapar ny HashMap för att spara orden och antal gånger
     private Map<String, Integer> m = new HashMap<String, Integer>();
 
+    // note konstruktor, skapar m där varje k-v är (stringArray[]:0)
     MultiWordCounter(String[] stringArray) {
         for (String string : stringArray) {
             this.m.put(string, 0);
         }
     }
 
-    // note behövs "this." här? är det onödigt eller bäst att ha med?
     @Override
+    // note kör k.equals(w) på varje element, k, i m.
+    // note Om likhet ökar värdet kopplat till k
     public void process(String w) {
         this.m.forEach((k, v) -> {
             if (k.equals(w)) {
@@ -29,6 +27,7 @@ public class MultiWordCounter implements TextProcessor {
     }
 
     @Override
+    // note skriver ut varje k-v i m
     public void report() {
         this.m.forEach((k, v) -> {
             System.out.println(k + ": " + v);
