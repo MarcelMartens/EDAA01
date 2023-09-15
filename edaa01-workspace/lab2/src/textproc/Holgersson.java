@@ -15,14 +15,14 @@ public class Holgersson {
 
 	// todox fixa så lista av TextProcessor-objekt funkar som input
 	// todox varje gång ett nytt ord läses in ska process anropas på alla i listan
-	// todo ändra sista TextProcessor objektet till multi och lägg i landskap
+	// todox ändra sista TextProcessor objektet till multi och lägg i landskap
 
 	public static void main(String[] args) throws FileNotFoundException {
 		ArrayList<TextProcessor> pList = new ArrayList<>(
 				Arrays.asList(
 						new SingleWordCounter("nils"),
 						new SingleWordCounter("norge"),
-						new SingleWordCounter("borta")));
+						new MultiWordCounter(REGIONS)));
 
 		Scanner s = new Scanner(new File("edaa01-workspace/lab2/nilsholg.txt"));
 		s.findWithinHorizon("\uFEFF", 1);

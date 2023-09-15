@@ -16,7 +16,7 @@ public class Machine {
 	}
 
 	/** Tilldelar maskinen jobbet j. */
-	// fix ändrade till += så att den adderar nya tiden med gamla
+	// fixed ändrade till += så att den adderar nya tiden med gamla
 	public void assignJob(Job j) {
 		jobs.add(j);
 		scheduledTime += j.getTime();

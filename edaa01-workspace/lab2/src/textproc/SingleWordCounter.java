@@ -10,12 +10,14 @@ public class SingleWordCounter implements TextProcessor {
 	}
 
 	// fixed ändrade == operanden till String.equals(), == kollar efter samma objekt
+	@Override
 	public void process(String w) {
 		if (w.equals(this.word)) {
 			this.n++;
 		}
 	}
 
+	@Override
 	public void report() {
 		System.out.println(word + ": " + n);
 	}
