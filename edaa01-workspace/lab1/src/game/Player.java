@@ -1,7 +1,7 @@
 package game;
 
 /** Superklass till spelarklasserna */
-class Player {
+abstract class Player {
     private String userId;
 
     Player(String user_ID) {
@@ -13,8 +13,6 @@ class Player {
         return this.userId;
     }
 
-    /** metod som overridas i subklasser. Returnar alltid 0 */
-    int takePins(Board board) {
-        return 0;
-    }
+    /** metod som overridas i subklasser. Returnar alltid 0 annars */
+    abstract int takePins(Board board);
 }

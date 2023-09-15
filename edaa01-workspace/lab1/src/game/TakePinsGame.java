@@ -36,6 +36,7 @@ public class TakePinsGame {
         initValues[1] = false;
       }
 
+      // fix om det blir -1 totala pins kan vi köra en check för <= 0 pins innan
       // Kör mänskliga spelarens runda, kollar efter om antal pins är < 0
       printMessage("you took " + hp.takePins(b) + " Pins\n" + b.getTotPins() +
           " pins remaining");
@@ -44,6 +45,7 @@ public class TakePinsGame {
         initValues = retryReset(b);
         continue;
       }
+
       // Kör datorns runda, kollar efter om antal pins är < 0
       printMessage("the computer took " + cp.takePins(b) + " Pins\n" +
           b.getTotPins() + " pins remaining");
