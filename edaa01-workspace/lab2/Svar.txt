@@ -40,3 +40,6 @@ c.
 d. 
     Det finns två "contains"-metoder. En för keys och en för values. 
     För att kolla om en key förekommer används containsKey()
+
+D13
+* 

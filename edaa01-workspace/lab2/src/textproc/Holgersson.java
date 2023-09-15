@@ -20,9 +20,9 @@ public class Holgersson {
 	// todox ändra sista TextProcessor objektet till multi och lägg i landskap
 
 	public static void main(String[] args) throws FileNotFoundException {
-
-		// alt Scanner s1 = new Scanner(new File("edaa01-workspace/lab2/nilsholg.txt"));
-		Scanner s1 = new Scanner(new File("edaa01-workspace/lab2/test1.txt"));
+		long t0 = System.nanoTime();
+		Scanner s1 = new Scanner(new File("edaa01-workspace/lab2/nilsholg.txt"));
+		// alt Scanner s1 = new Scanner(new File("edaa01-workspace/lab2/test1.txt"));
 		Scanner s2 = new Scanner(new File("edaa01-workspace/lab2/undantagsord.txt"));
 		s1.findWithinHorizon("\uFEFF", 1);
 		s1.useDelimiter("(\\s|,|\\.|:|;|!|\\?|'|\\\")+"); // se handledning
@@ -55,5 +55,35 @@ public class Holgersson {
 		pList.forEach((p) -> {
 			p.report();
 		});
+		System.out.println("total runtime: " + ((System.nanoTime() - t0) / (1000000)) + "ms");
+	}
+	// note runtimes:293,285,297,284,287 -> Median:287ms
+
+	@Deprecated
+	private static float calculateRunTime(int nbrOfTimes) {
+		try {
+			int runNbr = nbrOfTimes;
+			float[] runTimeArray = new float[runNbr];
+			for (int i = 0; i < runNbr; i++) {
+				long t0 = System.nanoTime();
+				Holgersson.main(new String[0]);
+				float runTime = (t0 - System.nanoTime()) / (10 ^ 6);
+				runTimeArray[i] = runTime;
+			}
+			Arrays.sort(runTimeArray);
+			float medianRunTime;
+			if ((runNbr % 2) == 0) {
+				medianRunTime = (runTimeArray[(nbrOfTimes / 2) - 1]
+						+ runTimeArray[nbrOfTimes / 2])
+						/ 2;
+			} else {
+				medianRunTime = runTimeArray[nbrOfTimes / 2];
+			}
+			return medianRunTime;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 }
