@@ -58,6 +58,7 @@ public class Holgersson {
 		// note kör .report() på alla WordCounters
 		pList.forEach((p) -> {
 			p.report();
+			System.out.println("    --------");
 		});
 		System.out.println("total runtime: " + ((System.nanoTime() - t0) / (1000000)) + "ms");
 	}
