@@ -34,7 +34,7 @@ public class GeneralWordCounter implements TextProcessor {
     @Override
     // note gör om m till en lista av Map.Entry's och sorterar de
     // note sorteras i första hand på antal förekomster och alfabetiskt om lika
-    // note Printar sedan ut de 5 mest förekommande orden, om index<5
+    // note Printar sedan ut de 5 mest förekommande orden, om index < 5
     // note printar den ut "index" antal st
     public void report() {
         Set<Map.Entry<String, Integer>> wordSet = m.entrySet();

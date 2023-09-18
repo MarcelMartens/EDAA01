@@ -1,0 +1,5 @@
+F2
+    Metoden Map.entrySet() hämtar ett set av k-v par om den callas på ett Map objekt
+
+F3
+    List.sort((e1,e2) -> e2.getValue().compareTo(e1.getValue()));
