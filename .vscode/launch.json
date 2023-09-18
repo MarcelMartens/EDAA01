@@ -1,0 +1,371 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "DrawShapes",
+            "request": "launch",
+            "mainClass": "arv.DrawShapes",
+            "projectName": "exempel-modul-1-2"
+        },
+        {
+            "type": "java",
+            "name": "ArrayExample",
+            "request": "launch",
+            "mainClass": "java_intro.ArrayExample",
+            "projectName": "exempel-modul-1-2"
+        },
+        {
+            "type": "java",
+            "name": "ArrayListExample",
+            "request": "launch",
+            "mainClass": "java_intro.ArrayListExample",
+            "projectName": "exempel-modul-1-2"
+        },
+        {
+            "type": "java",
+            "name": "Asterisks",
+            "request": "launch",
+            "mainClass": "java_intro.Asterisks",
+            "projectName": "exempel-modul-1-2"
+        },
+        {
+            "type": "java",
+            "name": "CompareStrings",
+            "request": "launch",
+            "mainClass": "java_intro.CompareStrings",
+            "projectName": "exempel-modul-1-2"
+        },
+        {
+            "type": "java",
+            "name": "LinearSearch",
+            "request": "launch",
+            "mainClass": "java_intro.LinearSearch",
+            "projectName": "exempel-modul-1-2"
+        },
+        {
+            "type": "java",
+            "name": "MatrixExample",
+            "request": "launch",
+            "mainClass": "java_intro.MatrixExample",
+            "projectName": "exempel-modul-1-2"
+        },
+        {
+            "type": "java",
+            "name": "OddOrEven",
+            "request": "launch",
+            "mainClass": "java_intro.OddOrEven",
+            "projectName": "exempel-modul-1-2"
+        },
+        {
+            "type": "java",
+            "name": "TwoSquares",
+            "request": "launch",
+            "mainClass": "java_intro.TwoSquares",
+            "projectName": "exempel-modul-1-2"
+        },
+        {
+            "type": "java",
+            "name": "BankLoan",
+            "request": "launch",
+            "mainClass": "statiska_attribut.BankLoan",
+            "projectName": "exempel-modul-1-2"
+        },
+        {
+            "type": "java",
+            "name": "Member",
+            "request": "launch",
+            "mainClass": "statiska_attribut.Member",
+            "projectName": "exempel-modul-1-2"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "binarysearchtree.Main",
+            "projectName": "exempel-modul-11-12"
+        },
+        {
+            "type": "java",
+            "name": "BinaryTree",
+            "request": "launch",
+            "mainClass": "binarytree.BinaryTree",
+            "projectName": "exempel-modul-11-12"
+        },
+        {
+            "type": "java",
+            "name": "MonthAndNbrDays",
+            "request": "launch",
+            "mainClass": "map.MonthAndNbrDays",
+            "projectName": "exempel-modul-11-12"
+        },
+        {
+            "type": "java",
+            "name": "PersonSetExample",
+            "request": "launch",
+            "mainClass": "set.PersonSetExample",
+            "projectName": "exempel-modul-11-12"
+        },
+        {
+            "type": "java",
+            "name": "SetExample",
+            "request": "launch",
+            "mainClass": "set.SetExample",
+            "projectName": "exempel-modul-11-12"
+        },
+        {
+            "type": "java",
+            "name": "PriorityQueueStrings",
+            "request": "launch",
+            "mainClass": "priorityqueue.PriorityQueueStrings",
+            "projectName": "exempel-modul-13"
+        },
+        {
+            "type": "java",
+            "name": "Mergesort",
+            "request": "launch",
+            "mainClass": "recursion_sort.Mergesort",
+            "projectName": "exempel-modul-13"
+        },
+        {
+            "type": "java",
+            "name": "MainComplexNumbers",
+            "request": "launch",
+            "mainClass": "interface_complexnumber.MainComplexNumbers",
+            "projectName": "exempel-modul-3"
+        },
+        {
+            "type": "java",
+            "name": "ComputeArea",
+            "request": "launch",
+            "mainClass": "interface_measurable.ComputeArea",
+            "projectName": "exempel-modul-3"
+        },
+        {
+            "type": "java",
+            "name": "MonthAndNbrDays(1)",
+            "request": "launch",
+            "mainClass": "jcf.MonthAndNbrDays",
+            "projectName": "exempel-modul-3"
+        },
+        {
+            "type": "java",
+            "name": "PriorityQueueExample",
+            "request": "launch",
+            "mainClass": "jcf.PriorityQueueExample",
+            "projectName": "exempel-modul-3"
+        },
+        {
+            "type": "java",
+            "name": "SetExample(1)",
+            "request": "launch",
+            "mainClass": "jcf.SetExample",
+            "projectName": "exempel-modul-3"
+        },
+        {
+            "type": "java",
+            "name": "SortExample",
+            "request": "launch",
+            "mainClass": "compare.SortExample",
+            "projectName": "exempel-modul-4"
+        },
+        {
+            "type": "java",
+            "name": "SortMultipleFields",
+            "request": "launch",
+            "mainClass": "compare.SortMultipleFields",
+            "projectName": "exempel-modul-4"
+        },
+        {
+            "type": "java",
+            "name": "SearchExample",
+            "request": "launch",
+            "mainClass": "equals.SearchExample",
+            "projectName": "exempel-modul-4"
+        },
+        {
+            "type": "java",
+            "name": "Utilities",
+            "request": "launch",
+            "mainClass": "generic_methods.Utilities",
+            "projectName": "exempel-modul-4"
+        },
+        {
+            "type": "java",
+            "name": "CounterView",
+            "request": "launch",
+            "mainClass": "examples.CounterView",
+            "projectName": "exempel-modul-5"
+        },
+        {
+            "type": "java",
+            "name": "ListExample",
+            "request": "launch",
+            "mainClass": "examples.ListExample",
+            "projectName": "exempel-modul-5"
+        },
+        {
+            "type": "java",
+            "name": "MenuExample",
+            "request": "launch",
+            "mainClass": "examples.MenuExample",
+            "projectName": "exempel-modul-5"
+        },
+        {
+            "type": "java",
+            "name": "SquareRoot",
+            "request": "launch",
+            "mainClass": "examples.SquareRoot",
+            "projectName": "exempel-modul-5"
+        },
+        {
+            "type": "java",
+            "name": "CountersView",
+            "request": "launch",
+            "mainClass": "many_buttons.CountersView",
+            "projectName": "exempel-modul-5"
+        },
+        {
+            "type": "java",
+            "name": "ForEachExamples",
+            "request": "launch",
+            "mainClass": "iterate.ForEachExamples",
+            "projectName": "exempel-modul-6"
+        },
+        {
+            "type": "java",
+            "name": "IteratorExample",
+            "request": "launch",
+            "mainClass": "iterate.IteratorExample",
+            "projectName": "exempel-modul-6"
+        },
+        {
+            "type": "java",
+            "name": "RemoveIfExamples",
+            "request": "launch",
+            "mainClass": "iterate.RemoveIfExamples",
+            "projectName": "exempel-modul-6"
+        },
+        {
+            "type": "java",
+            "name": "StreamExamples",
+            "request": "launch",
+            "mainClass": "stream.StreamExamples",
+            "projectName": "exempel-modul-6"
+        },
+        {
+            "type": "java",
+            "name": "CompareSortingTimes",
+            "request": "launch",
+            "mainClass": "compareTime.CompareSortingTimes",
+            "projectName": "exempel-modul-7-8"
+        },
+        {
+            "type": "java",
+            "name": "ListExample(1)",
+            "request": "launch",
+            "mainClass": "simglelinkedlist.ListExample",
+            "projectName": "exempel-modul-7-8"
+        },
+        {
+            "type": "java",
+            "name": "BinarySearch",
+            "request": "launch",
+            "mainClass": "binarysearch.BinarySearch",
+            "projectName": "exempel-modul-9-10"
+        },
+        {
+            "type": "java",
+            "name": "SearchPersonExample",
+            "request": "launch",
+            "mainClass": "binarysearch.SearchPersonExample",
+            "projectName": "exempel-modul-9-10"
+        },
+        {
+            "type": "java",
+            "name": "Fibonacci",
+            "request": "launch",
+            "mainClass": "divide_and_conquer.Fibonacci",
+            "projectName": "exempel-modul-9-10"
+        },
+        {
+            "type": "java",
+            "name": "Solver",
+            "request": "launch",
+            "mainClass": "eight_queens.Solver",
+            "projectName": "exempel-modul-9-10"
+        },
+        {
+            "type": "java",
+            "name": "MainList",
+            "request": "launch",
+            "mainClass": "list.MainList",
+            "projectName": "exempel-modul-9-10"
+        },
+        {
+            "type": "java",
+            "name": "Factorial",
+            "request": "launch",
+            "mainClass": "small_examples.Factorial",
+            "projectName": "exempel-modul-9-10"
+        },
+        {
+            "type": "java",
+            "name": "FactorialWithPrinting",
+            "request": "launch",
+            "mainClass": "small_examples.FactorialWithPrinting",
+            "projectName": "exempel-modul-9-10"
+        },
+        {
+            "type": "java",
+            "name": "ReverseNbr",
+            "request": "launch",
+            "mainClass": "small_examples.ReverseNbr",
+            "projectName": "exempel-modul-9-10"
+        },
+        {
+            "type": "java",
+            "name": "SmartVsNormal",
+            "request": "launch",
+            "mainClass": "game.SmartVsNormal",
+            "projectName": "lab1"
+        },
+        {
+            "type": "java",
+            "name": "TakePinsGame",
+            "request": "launch",
+            "mainClass": "game.TakePinsGame",
+            "projectName": "lab1"
+        },
+        {
+            "type": "java",
+            "name": "TestScheduler",
+            "request": "launch",
+            "mainClass": "lpt.TestScheduler",
+            "projectName": "lab2"
+        },
+        {
+            "type": "java",
+            "name": "Holgersson",
+            "request": "launch",
+            "mainClass": "textproc.Holgersson",
+            "projectName": "lab2"
+        },
+        {
+            "type": "java",
+            "name": "FractalApplication",
+            "request": "launch",
+            "mainClass": "fractal.FractalApplication",
+            "projectName": "lab5"
+        }
+    ]
+}
