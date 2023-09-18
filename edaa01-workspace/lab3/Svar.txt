@@ -3,3 +3,15 @@ F2
 
 F3
     List.sort((e1,e2) -> e2.getValue().compareTo(e1.getValue()));
+
+F4
+    * setAction()
+    * getText()
+    * add()
+    * setSelectedIndeces()
+
+D1
+    Map.Entry<String,Integer>
+    new ArrayList<Map.Entry<String, Integer>>(m.entrySet())
+
+D2
