@@ -1,3 +1,5 @@
+"todo-tree.regex.regex": "(//|#|<!--|/\\*|^|^[ \t]*(-|\\d+.))\\s*($TAGS)"
+
 F2
 4. 
     I sorteringen av jobb var j1 och j2 i fel ordning 
@@ -18,22 +20,67 @@ F3
 
 F4
 a. 
-    * 200st
+    * 20st
     * Om ej ett index är speciferat i add(int index, E element) kommer den alltid
         att defaulta till sista index + 1. Då ska alla element vara i ordning
 b. 
     * En hashset tillåter inte dubbletter iom att hashen genereras av innehållet.
         Därmed kommer varje tal bara läggas till en gång i listan och andra
         add() kommer inte att ha någon effekt. 
-        100 rader skrivs ut.
+        10 rader skrivs ut.
     * Hashset tar ej hänsyn till när/var något läggs till utan referarar 
         bara mot ett specifikt hash för varje element. 
         Ordningen av talen kommer därför inte vara i ordning
 c. 
     * <String, int>
     * get() returnerar värdet för den key man använder som parameter
-        Den kommer därför skriva ut "12" eftersom key-value paret är
-        "Albatross" - 12
+        När albatross läggs in igen kommer gamla k-v paret skrivas över
+        Den kommer därför skriva ut "7" eftersom key-value paret är
+        "albatross" - 7
 d. 
     Det finns två "contains"-metoder. En för keys och en för values. 
     För att kolla om en key förekommer används containsKey()
+
+D13
+*   Det funkar fortfarande, men fick lägga till en import
+*   TreeMap-versionen sorterar automatiskt MultiWordCounter's utskrift
+        GeneralWordCounter's utskrift ändras inte.
+*   Skillnaden i mediantid är 32ms (HashMap: 287ms, TreeMap:319ms)
+        Mediantiden kommer öka när TreeMap används.
+
+D14
+*   Map är ett interface som sätter vissa regler som implementationer måste följa
+        Interfacet innehåller vanliga metoder som alla versioner måste ha, tex get()
+        HashMap är en sån implementation och "ärver" metoderna från Map
+
+*   En HashMap sparar alla key-value par i ett hash-table, är osorterad,
+        tillåter ej dubletter och tillåter null (max en key men obegränsat värden).
+        Passar bäst där man behöver något snabbt och effektivt utan krimskrams
+
+    En TreeMap sparar alla key-value par i ett binärt sökträd, är sorterad,
+        tillåter ej dubletter, tillåter ej null och har en fastställbar tidskomplexitet
+        passar bäst där man antingen vill ha en sorterad lista,
+        där tidskomplexitet är en faktor eller där man behöver köra multithreading
+
+*   Map är ett bra sätt att använda data i formen av ett par. Exempelvis i denna 
+        labben där vi skulle hitta ord och antalet gånger de kommer i texten.
+        Map har också en lägre tidskomplexitet än tex arraylist för större mängd element
+        (iaf för många av de vanligaste metoderna)
+    Set är på många sätt likt en Map men istället för par finns det 
+        bara 1 värde per element. Alla element är också unika.
+    Båda två är bra för större dataset då det är snabbare att köra tex get()
+        än det är i tex en array eller arraylist
+
+*   Interfacet comparator är en samling av metoder/regler som måste stämma  
+        för att kunna använda generella sortering/jämförelser på icke generella
+        klasser/objekt. Ett comparator objekt är i detta fallet ett funktionsuttryck 
+        i form av en lambdafunktion och den säger mer eller mindre: 
+        vad som jämförs och hur det ska jämföras.
+
+    sort() metoden tar ett comparatorobjekt som parameter och utför sedan 
+        sorteringen efter de regler som comparatorobjektet ger. 
+        Den kör mer eller mindre samma sak som .compareTo() gör i klassen String
+        ger -1/1 om någon av de är större och 0 om de är lika. 
+    kort: Comparator säger åt .sort() vad den ska sortera och hur.
+
+
