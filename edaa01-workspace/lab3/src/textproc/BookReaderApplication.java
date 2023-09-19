@@ -11,9 +11,10 @@ import java.util.Set;
 public class BookReaderApplication {
 
     // todo lägg till/skapa wordcounter
-    // todo lägg till/skapa bookreadercontroller
-    // todo läs in orden från .txt och
-    // todo kör
+    // () lägg till/skapa bookreadercontroller
+    // () läs in orden från .txt och
+    // (x) kör, funkade bra
+
     public static void main(String[] args) throws FileNotFoundException {
         // note deklarerar scanners
         Scanner s1 = new Scanner(new File("edaa01-workspace/lab3/nilsholg.txt"));
