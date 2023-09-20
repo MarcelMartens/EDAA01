@@ -2,8 +2,6 @@ package textproc;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -11,11 +9,12 @@ import java.util.Set;
 public class BookReaderApplication {
 
     // todo lägg till/skapa wordcounter
-    // () lägg till/skapa bookreadercontroller
-    // () läs in orden från .txt och
-    // (x) kör, funkade bra
+    // (x) lägg till/skapa bookreadercontroller
+    // (x) läs in orden från .txt
+    // (x) kör utan fel, se så en tom ruta dyker upp
 
     public static void main(String[] args) throws FileNotFoundException {
+
         // note deklarerar scanners
         Scanner s1 = new Scanner(new File("edaa01-workspace/lab3/nilsholg.txt"));
         Scanner s2 = new Scanner(new File("edaa01-workspace/lab3/undantagsord.txt"));
@@ -43,6 +42,8 @@ public class BookReaderApplication {
             String word = s1.next().toLowerCase();
             p.process(word);
         }
+
+        // alt p.report();
 
         // note stänger scanners
         s1.close();
