@@ -17,9 +17,9 @@ public class GeneralWordCounter implements TextProcessor {
         this.s = stopWordSet;
     }
 
-    @Override
     // note om ordet w finns i s returnar funktionen (läggs ej till i m)
     /// lägger till, i m, (w:0) om w ej redan finns, annars (w:värde+1)
+    @Override
     public void process(String w) {
         if (s.contains(w)) {
             return;
@@ -29,13 +29,14 @@ public class GeneralWordCounter implements TextProcessor {
         } else {
             this.m.put(w, 1);
         }
+
     }
 
-    @Override
     // note gör om m till en lista av Map.Entry's och sorterar de
     /// sorteras i första hand på antal förekomster och alfabetiskt om lika
     /// Printar sedan ut de 5 mest förekommande orden, om index < 5
     /// printar den ut "index" antal st
+    @Override
     public void report() {
         Set<Map.Entry<String, Integer>> wordSet = m.entrySet();
         List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(wordSet);
@@ -59,4 +60,5 @@ public class GeneralWordCounter implements TextProcessor {
     public List<Map.Entry<String, Integer>> getWordList() {
         return new ArrayList<Map.Entry<String, Integer>>(m.entrySet());
     }
+
 }

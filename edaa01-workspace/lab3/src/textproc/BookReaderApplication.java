@@ -35,13 +35,13 @@ public class BookReaderApplication {
         GeneralWordCounter p = new GeneralWordCounter(stopWordSet);
 
         // note deklarerar ett BookReaderController objekt och callar createWindow
-        BookReaderController brc = new BookReaderController(p);
 
         // note kör .process() på GeneralWordCounter p
         while (s1.hasNext()) {
             String word = s1.next().toLowerCase();
             p.process(word);
         }
+        BookReaderController brc = new BookReaderController(p);
 
         // alt p.report();
 
