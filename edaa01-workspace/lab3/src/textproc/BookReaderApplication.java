@@ -8,11 +8,6 @@ import java.util.Set;
 
 public class BookReaderApplication {
 
-    // todo lägg till/skapa wordcounter
-    // (x) lägg till/skapa bookreadercontroller
-    // (x) läs in orden från .txt
-    // (x) kör utan fel, se så en tom ruta dyker upp
-
     public static void main(String[] args) throws FileNotFoundException {
 
         // note deklarerar scanners
@@ -34,20 +29,19 @@ public class BookReaderApplication {
         // note deklarerar en GeneralWordCounter
         GeneralWordCounter p = new GeneralWordCounter(stopWordSet);
 
-        // note deklarerar ett BookReaderController objekt och callar createWindow
-
-        // note kör .process() på GeneralWordCounter p
+        // note kör .process() på GeneralWordCounter p för alla ord i textfil
         while (s1.hasNext()) {
             String word = s1.next().toLowerCase();
             p.process(word);
         }
-        BookReaderController brc = new BookReaderController(p);
-
-        // alt p.report();
 
         // note stänger scanners
         s1.close();
         s2.close();
 
+        // note deklarerar ett BookReaderController objekt
+        /// kör fönstret och all logik vid användning
+        /// avslutar programmet när fönstret stängs
+        BookReaderController brc = new BookReaderController(p);
     }
 }

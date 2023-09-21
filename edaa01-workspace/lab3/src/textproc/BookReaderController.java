@@ -13,6 +13,7 @@ import java.util.Map;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JRadioButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -23,6 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import java.awt.Toolkit;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 
 // todo JPane-Controller
 // (x) knappar: sortera alfabetisk, sortera antal
@@ -34,7 +36,7 @@ import java.awt.Dimension;
 // (x) update-metod?
 // (x) skapa en JList och knyt den till en listmodell (SortedListModel)
 // (x) skapa JScrollPane, ska innehålla listmodellen och lägg till i fönstret
-// () lägg till texten "sort by:" till vänster om knapparna
+// (x) lägg till texten "sort by:" till vänster om knapparna
 // (x) fixa bugg där listan ändras under tiden den ittererar.
 // (x) I ditt användargränssnitt kan man skriva in ett ord att söka efter. 
 /// Om användaren rå- kar inleda eller avsluta ordet med ett eller fler 
@@ -51,30 +53,35 @@ import java.awt.Dimension;
 // () Programmet vore mer användbart om man kunde välja vilken textfil som 
 /// ska analyseras. Låt användaren välja en fil att analysera. 
 /// Använd klassen JFileChooser.
-// () För de två sorteringsknapparna passar det bra att använda 
+// (x) För de två sorteringsknapparna passar det bra att använda 
 /// s.k. radioknappar. En sådan markeras när den är intryckt, och bara en knapp 
 /// i samma grupp kan vara intryckt i taget. 
+// () kolla ifall det kan skapa fel att inte kolla om stringen är null 
+/// vid borttagning av siffror från listan
 
-// note klass för att kontrollera J-Objekt
+/**
+ * kontroller-klass för att hantera JPane-objekt och andra komponenter vid
+ * körning
+ */
 public class BookReaderController {
-    // alt private JList<Map.Entry<String, Integer>> list;
 
     public BookReaderController(GeneralWordCounter counter) {
         SwingUtilities.invokeLater(() -> createWindow(counter, "BookReader", 400, 600));
     }
 
-    // func metod för att skapa och visa ett JFrame-objekt med specificerat innehåll
+    /**
+     * metod för att skapa och visa ett JFrame-objekt med ett skrollbart dokument
+     * med String-Integer par som är sorterings- och sökningsbara efter Stringen
+     */
     private void createWindow(GeneralWordCounter counter, String title,
             int width, int height) {
 
-        // note skapar JFrame och pane och ställer in rätt inställningar
+        // note deklarerar JFrame och JPane + ställer in rätt inställningar
         JFrame frame = new JFrame(title);
         Container pane = frame.getContentPane();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // note skapar en List, Jlist, SortedListModel och tar bort alla ord som börjar
-        /// med en siffra
-        // todo kolla ifall det kan skapa fel att inte kolla om stringen är null
+        // note skapar en Listmodell för JList och tar bort alla ord som är siffror
         List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(counter.getWordList());
         wordList.removeIf(e -> Character.isDigit(e.getKey().charAt(0)));
         SortedListModel<Map.Entry<String, Integer>> listModel = new SortedListModel<Map.Entry<String, Integer>>(
@@ -82,15 +89,17 @@ public class BookReaderController {
         JList<Map.Entry<String, Integer>> list = new JList<Map.Entry<String, Integer>>(listModel);
         JScrollPane scrollPane = new JScrollPane(list);
 
-        // note deklarerar fönster-objekt och lägger de i ett JPane-objekt
+        // note deklarerar alla fönster-objekt som ska användas
         JPanel bottomPanel = new JPanel();
-        JButton sortButton1 = new JButton("Alphabetic");
-        JButton sortButton2 = new JButton("Frequency");
+        JPanel sortPanel = new JPanel();
+        ButtonGroup buttonGroup = new ButtonGroup();
+        JLabel sortLabel = new JLabel("sort by:");
+        JRadioButton sortButton1 = new JRadioButton("Alphabetic");
+        JRadioButton sortButton2 = new JRadioButton("Frequency");
         JButton searchButton = new JButton("find");
         JTextField textField = new JTextField(10);
-        JLabel bottomText = new JLabel("sort by:");
 
-        // note definierar händelser vid knapptryck
+        // note definierar vad som ska hända när knappar trycks
         sortButton1.addActionListener(e -> listModel.sort((e1, e2) -> e1.getKey().compareTo(e2.getKey())));
         sortButton2.addActionListener(e -> listModel.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue())));
         searchButton.addActionListener(e -> {
@@ -106,8 +115,9 @@ public class BookReaderController {
                     "The word does not appear in the text or is defined as ignored.");
         });
 
-        // note definierar vad som händer när enter trycks
-        /// sökrutan fokuseras eller inte
+        // note definierar vad som händer när enter trycks samt vad som händer
+        /// när sökrutan fokuseras eller tappar fokus
+        /// försökte lösa med lambdas, men gav massa fel...
         textField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -134,30 +144,28 @@ public class BookReaderController {
             }
         });
 
-        // note lägger till alla komponenter i rätt objekt
-        bottomPanel.add(sortButton1);
-        bottomPanel.add(sortButton2);
+        // note lägger till alla komponenter i rätt panel/pane
+        buttonGroup.add(sortButton1);
+        buttonGroup.add(sortButton2);
+        sortPanel.add(sortButton1);
+        sortPanel.add(sortButton2);
+        bottomPanel.add(sortLabel);
+        bottomPanel.add(sortPanel);
         bottomPanel.add(textField);
         bottomPanel.add(searchButton);
-
         pane.add(bottomPanel, BorderLayout.SOUTH);
         pane.add(scrollPane, BorderLayout.CENTER);
 
-        // note ställer in utseendet av fönstret inför körning
+        // note ställer in initiella utseendet av fönstret och gör det synligt
+        /// tog bort pack() då jag hellre ställer in storlek dynamiskt
+        sortPanel.setLayout(new GridLayout(0, 1));
         Dimension res = Toolkit.getDefaultToolkit().getScreenSize();
-        // alt int windowWidth = (res.width / 3);
-        // alt int windowHeight = ((res.height * 2) / 3);
-        // alt int windowX = ((res.width / 2) - (windowWidth / 2));
-        // alt int windowY = ((res.height / 2) - (windowHeight / 2));
         textField.setText("Search...");
         textField.setForeground(Color.GRAY);
         frame.setBounds(((res.width / 2) - ((res.width / 3) / 2)),
                 ((res.height / 2) - (((res.height * 2) / 3) / 2)),
                 (res.width / 3),
                 ((res.height * 2) / 3));
-
-        // note förbereder fönstret för visning och sätter det som synligt
-        // frame.pack();
         frame.setVisible(true);
     }
 }
