@@ -17,6 +17,7 @@ public class Holgersson {
 			"öland", "östergötland" };
 
 	public static void main(String[] args) throws FileNotFoundException {
+
 		// note deklarerar scanners och sätter starttid
 		long t0 = System.nanoTime();
 		Scanner s1 = new Scanner(new File("edaa01-workspace/lab2/nilsholg.txt"));
@@ -52,6 +53,7 @@ public class Holgersson {
 		}
 
 		// note stänger scanners
+
 		s1.close();
 		s2.close();
 

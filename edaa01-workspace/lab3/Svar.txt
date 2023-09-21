@@ -1,0 +1,65 @@
+F2
+    Metoden Map.entrySet() hämtar ett set av k-v par om den callas på ett Map objekt
+
+F3
+    List.sort((e1,e2) -> e2.getValue().compareTo(e1.getValue()));
+
+F4
+    * setAction()
+    * getText()
+    * add()
+    * setSelectedIndeces()
+
+D1
+    Map.Entry<String,Integer>
+    new ArrayList<Map.Entry<String, Integer>>(m.entrySet())
+
+D11
+    * Metoder/klasser som är beroende av en annan klass eller metod kallar
+        alltid, inte tvärt om. Därmed är klarar man sig undan en 
+        del felsökning vid parameter-fel
+        syns ganska mycket i controller
+    * För att du vet vad du kommer få i förhand
+        Lambdauttrycket kommer aldrig explodera för att du fått en datatyp
+        som ej funkar ihop med den koden du har inom uttrycket.
+    * själva fönstret har en inbakad funktionalitet för att se om något uppdaterats
+        Om någon delkomponent uppdateras kommer den kalla en metod i still med
+        fireContentsChanged eller liknande som sedan går hela vägen upp till 
+        huvudkomponenten som sedan uppdaterar det vi ser.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Dimension res = Toolkit.getDefaultToolkit().getScreenSize();
+        int windowWidth = res.width / 3;
+        int windowHeight = (res.height * 2) / 3;
+        int windowX = (res.width / 2) - (windowWidth / 2);
+        int windowY = (res.height / 2) - (windowHeight / 2);
+        textField.setText("Search...");
+        textField.setForeground(Color.GRAY);
+        frame.setBounds(windowX, windowY, windowWidth, windowHeight);
