@@ -50,7 +50,7 @@ public class GeneralWordCounter implements TextProcessor {
             }
         });
 
-        int maxIndex = Math.min(5, wordList.size());
+        int maxIndex = Math.min(15, wordList.size());
         for (int i = 0; i < maxIndex; i++) {
             System.out.println(wordList.get(i).toString());
         }
