@@ -1,0 +1,18 @@
+-   -   -   Förberedelser   -   -   -
+1.
+2.
+    a) Null
+    b) queue.front()
+    c) queue.front()
+3.
+    a) assertSame
+    b) !assertTrue
+4. 
+5.
+
+-   -   -   Datorarbete -   -   -
+D1.
+    
+D2.
+D3.
+D4.

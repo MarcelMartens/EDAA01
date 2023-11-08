@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "temp",
+            "request": "launch",
+            "mainClass": "queue_singlelinkedlist.temp",
+            "projectName": "lab4"
+        },
+        {
+            "type": "java",
             "name": "BookReaderApplication",
             "request": "launch",
             "mainClass": "textproc.BookReaderApplication",
