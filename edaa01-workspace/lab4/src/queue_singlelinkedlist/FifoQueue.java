@@ -23,6 +23,7 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	public boolean offer(E e) {
 		if (e == null)
 			throw new NullPointerException();
+
 		QueueNode<E> n0 = new QueueNode<E>(e);
 		if (this.last == null)
 			n0.next = n0;
@@ -107,7 +108,7 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * @return an iterator over the elements in this queue
 	 */
 	public Iterator<E> iterator() {
-		return new QueueIterator();
+		return new QueueIterator(this);
 	}
 
 	/**
@@ -118,16 +119,41 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * @param q the queue to append
 	 * @throws IllegalArgumentException if this queue and q are identical
 	 */
+
 	public void append(FifoQueue<E> q) {
 		if (q == this) {
 			throw new IllegalArgumentException("Cannot conkatenate queue with itself");
 		}
-		QueueIterator iter = new QueueIterator();
-		while (iter.hasNext()) {
-			this.offer(iter.next());
+		if (q.last != null) {
+			Iterator<E> iter = q.iterator();
+			while (iter.hasNext()) {
+				this.offer(iter.next());
+			}
 		}
-
+		q.last = null;
+		q.size = 0;
 	}
+
+	/*
+	 * public void append(FifoQueue<E> q) {
+	 * if (q == this) {
+	 * throw new IllegalArgumentException("Cannot concatenate queue with itself");
+	 * }
+	 * if (q.last != null) {
+	 * if (this.last != null) {
+	 * this.size += q.size;
+	 * QueueNode<E> first = this.last.next;
+	 * this.last.next = q.last.next;
+	 * q.last.next = first;
+	 * } else {
+	 * this.last = q.last;
+	 * }
+	 * q.last = null;
+	 * q.size = 0;
+	 * }
+	 * 
+	 * }
+	 */
 
 	private static class QueueNode<E> {
 		E element;
@@ -143,7 +169,10 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 		private QueueNode<E> node = (last == null) ? null : last.next;
 		private int remain = size;
 
-		private QueueIterator() {
+		private QueueIterator(FifoQueue<E> q) {
+
+			this.node = (q.last != null) ? q.last.next : null;
+			this.remain = (q.last != null) ? q.size : 0;
 		}
 
 		public boolean hasNext() {
