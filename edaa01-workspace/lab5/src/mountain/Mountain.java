@@ -1,9 +1,12 @@
 package mountain;
 
+import java.util.HashMap;
+
 import fractal.Fractal;
 import fractal.TurtleGraphics;
 
 public class Mountain extends Fractal {
+    private HashMap<Side, Point> sides = new HashMap<>();
     private Point p1;
     private Point p2;
     private Point p3;
@@ -15,6 +18,9 @@ public class Mountain extends Fractal {
         this.p2 = p2;
         this.p3 = p3;
         this.dev = dev;
+        sides.put(new Side(p1, p2), halfWay(p1, p2, dev));
+        sides.put(new Side(p2, p3), halfWay(p2, p3, dev));
+        sides.put(new Side(p3, p1), halfWay(p3, p1, dev));
     }
 
     @Override
@@ -48,8 +54,14 @@ public class Mountain extends Fractal {
     }
 
     private Point halfWay(Point point1, Point point2, double dev) {
+        Side side = sides.keySet().stream().filter(s -> s.equals(new Side(point1, point2))).findFirst().orElse(null);
+        if (side != null) {
+            return sides.remove(side);
+        }
+
         Point halfWay = new Point((point1.getX() + point2.getX()) / 2,
                 ((point1.getY() + point2.getY()) / 2) + (int) RandomUtilities.randFunc(dev));
+        this.sides.put(new Side(point1, point2), halfWay);
         return halfWay;
     }
 }

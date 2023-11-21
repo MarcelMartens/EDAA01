@@ -9,8 +9,13 @@ public class Side {
         this.p2 = p2;
     }
 
-    public boolean isEqual(Side other) {
+    // @Override
+    public boolean equals(Side other) {
         return (this.p1 == other.p1 && this.p2 == other.p2 || this.p1 == other.p2 && this.p2 == other.p1);
+    }
+
+    public int hashCode() {
+        return (this.p1.hashCode() + this.p2.hashCode());
     }
 
 }
