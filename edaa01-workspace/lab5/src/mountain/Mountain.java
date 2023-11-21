@@ -40,4 +40,16 @@ public class Mountain extends Fractal {
             Point hp2 = halfWay(point2, point3, dev);
             Point hp3 = halfWay(point1, point3, dev);
 
-            fractalTriangle(turtle, order -
+            fractalTriangle(turtle, order - 1, point1, hp1, hp3, dev / 2);
+            fractalTriangle(turtle, order - 1, hp1, point2, hp2, dev / 2);
+            fractalTriangle(turtle, order - 1, hp3, hp2, point3, dev / 2);
+            fractalTriangle(turtle, order - 1, hp1, hp2, hp3, dev / 2);
+        }
+    }
+
+    private Point halfWay(Point point1, Point point2, double dev) {
+        Point halfWay = new Point((point1.getX() + point2.getX()) / 2,
+                ((point1.getY() + point2.getY()) / 2) + (int) RandomUtilities.randFunc(dev));
+        return halfWay;
+    }
+}
