@@ -1,0 +1,16 @@
+-   -   -   Förberedelser   -   -   -
+F1. 
+    a)  
+        10,20,30,47
+    b)  
+        2
+    c)  
+        3
+F2.
+    a)  
+        om trädet är tomt är höjden 0
+        annars är höjden antal noder i längsta grenen - 1
+    b) 
+        max()
+F3.
+    int mid = first + (last - first) / 2
