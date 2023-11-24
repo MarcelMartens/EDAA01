@@ -2,11 +2,11 @@
 1.
 2.
     a) Null
-    b) queue.front()
+    b) last.next()
     c) queue.front()
 3.
-    a) assertSame
-    b) !assertTrue
+    a) assertEquals
+    b) assertFalse
 4. 
 5.
 
