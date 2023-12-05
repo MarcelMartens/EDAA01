@@ -1,17 +1,14 @@
 package bst;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThrows;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class TestBinarySearchTree1 {
+public class TestBinarySearchTreeComparator {
     private BinarySearchTree<Integer> intBst;
     private BinarySearchTree<String> strBst;
 
@@ -97,4 +94,5 @@ public class TestBinarySearchTree1 {
         strBst.add("bass");
         strBst.add("tuna");
     }
+
 }

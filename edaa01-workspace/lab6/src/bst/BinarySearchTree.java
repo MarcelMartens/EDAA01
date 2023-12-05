@@ -3,23 +3,55 @@ package bst;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class BinarySearchTree<E> {
+public class BinarySearchTree<E extends Comparable<E>> {
 	BinaryNode<E> root; // Används också i BSTVisaulizer
 	int size; // Används också i BSTVisaulizer
 	private Comparator<E> comparator;
+
+	public static void main(String[] args) {
+		// BinarySearchTree<Integer> bst = getRandomIntTree(10);
+		BinarySearchTree<String> bst = getDefaultStringTree(10);
+		BinarySearchTree<String> bst2 = getDefaultStringTree(10);
+		BSTVisualizer bv = new BSTVisualizer("Binary Search Tree", 500, 500);
+		bv.drawTree(bst);
+		bst2.rebuild();
+		BSTVisualizer bv2 = new BSTVisualizer("Binary Search Tree", 500, 500);
+		bv2.drawTree(bst2);
+	}
+
+	public static BinarySearchTree<String> getDefaultStringTree(int nbrOfElements) {
+		BinarySearchTree<String> tempBst = new BinarySearchTree<>();
+		String[] strings = new String[] { "cat", "dog", "sun", "moon", "star", "blue", "red", "green", "tree", "bird",
+				"fish", "book", "pen", "cup", "door", "rain", "snow", "cloud", "car", "road", "apple", "orange",
+				"grape", "leaf", "wind", "fire", "water", "rock", "sand", "hill", "river", "lake", "sea", "city",
+				"town", "map", "key", "lock", "ring", "coin", "glass", "wood", "metal", "light", "dark", "cold", "hot",
+				"soft", "hard", "sky", "ball", "ship", "wave", "milk", "rose", "leaf", "cake", "jazz", "kite", "lamp",
+				"desk", "frog", "snow", "rain", "gold", "rice", "bean", "corn", "lime", "pear", "kiwi", "wolf", "bear",
+				"lion", "duck", "swan", "fish", "crab", "shark", "road", "path", "hill", "pond", "park", "shop", "town",
+				"city", "land", "farm", "wood", "rock", "clay", "sand", "dirt", "dust", "rust", "smog", "fog" };
+		for (String string : strings) {
+			tempBst.add(string);
+			if (tempBst.size >= nbrOfElements)
+				return tempBst;
+		}
+		return null;
+	}
+
+	public static BinarySearchTree<Integer> getRandomIntTree(int nbrOfElements) {
+		BinarySearchTree<Integer> tempBst = new BinarySearchTree<Integer>();
+		while (true) {
+			tempBst.add((int) Math.round(100 * Math.random()));
+			if (tempBst.size >= nbrOfElements)
+				return tempBst;
+		}
+	}
 
 	/**
 	 * Constructs an empty binary search tree.
 	 */
 	public BinarySearchTree() {
 		this.size = 0;
-		this.comparator = new Comparator<E>() {
-			@SuppressWarnings("unchecked")
-			@Override
-			public int compare(E o1, E o2) {
-				return ((Comparable<E>) o1).compareTo(o2);
-			}
-		};
+		this.comparator = Comparator.naturalOrder();
 	}
 
 	/**
@@ -124,13 +156,20 @@ public class BinarySearchTree<E> {
 	 * Builds a complete tree from the elements in the tree.
 	 */
 	public void rebuild() {
-
+		ArrayList<E> sortedList = new ArrayList<E>();
+		toArray(root, sortedList);
+		root = buildTree(sortedList, 0, sortedList.size() - 1);
 	}
 
 	/*
 	 * Adds all elements from the tree rooted at n in inorder to the list sorted.
 	 */
 	private void toArray(BinaryNode<E> n, ArrayList<E> sorted) {
+		if (n != null) {
+			toArray(n.left, sorted);
+			sorted.add(n.element);
+			toArray(n.right, sorted);
+		}
 
 	}
 
@@ -141,7 +180,14 @@ public class BinarySearchTree<E> {
 	 * Returns the root of tree.
 	 */
 	private BinaryNode<E> buildTree(ArrayList<E> sorted, int first, int last) {
-		return null;
+		if (last < first) {
+			return null;
+		}
+		int mid = (first + last) / 2;
+		BinaryNode<E> newRoot = new BinaryNode<E>(sorted.get(mid));
+		newRoot.left = buildTree(sorted, first, mid - 1);
+		newRoot.right = buildTree(sorted, mid + 1, last);
+		return newRoot;
 	}
 
 	static class BinaryNode<E> {
