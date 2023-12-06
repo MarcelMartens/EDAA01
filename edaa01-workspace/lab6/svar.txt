@@ -1,0 +1,38 @@
+-   -   -   Förberedelser   -   -   -
+F1. 
+    a)  
+        10,20,30,47
+    b)  
+        2
+    c)  
+        3
+F2.
+    a)  
+        om trädet är tomt är höjden 0
+        annars är höjden antal noder i längsta grenen - 1
+    b) 
+        max()
+F3.
+    int mid = first + (last - first) / 2
+
+D8
+    *
+        publika metoden funkar typ som ett gränssnitt mot användaren.
+            Den är enkel att använda och användaren är bortkopplad från all teknisk 
+            kod i den privata metoden.
+        Den publika metoden kan också användas för att initialisera eller 
+            definiera vissa förutsättningar som behövs för att den 
+            rekursiva processen kan köras exempelvis i add 
+            används den för att utföra add() då trädet är tomt
+        Den privata metoden är den som faktist gör allt jobb "under the hood"
+            Här behandlas alla interna värden som behövs för trädet, främst själva
+            rekursiva processen.
+    *
+        Det är fullt möjligt att använda en linked list istället, valet beror  
+            främst på vilken typ av operation som ska användas.
+        I detta fall skulle jag säga att arraylist är bättre iom att vi försöker 
+            komma åt elementet i mitten av listan, vilket med en linkedlist hade
+            lett till att den går igenom halva listan varje gång. En arraylist har
+            bättre tidskomplexitet vid sökning efter ett index långt ifrån början
+        Samma sak gäller vid insättningen eftersom att vi sätter in elementen sist.
+            Då kommer linkedlist ha sämsta möjliga tidskomplexitet.

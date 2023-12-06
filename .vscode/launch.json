@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "BinarySearchTree",
+            "request": "launch",
+            "mainClass": "bst.BinarySearchTree",
+            "projectName": "lab6"
+        },
+        {
+            "type": "java",
             "name": "temp",
             "request": "launch",
             "mainClass": "queue_singlelinkedlist.temp",
