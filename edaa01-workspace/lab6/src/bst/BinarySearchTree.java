@@ -9,6 +9,8 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	private Comparator<E> comparator;
 
 	public static void main(String[] args) {
+		getIncementedIntTree(10);
+
 		// BinarySearchTree<Integer> bst = getRandomIntTree(10);
 		BinarySearchTree<String> bst = getDefaultStringTree(10);
 		BinarySearchTree<String> bst2 = getDefaultStringTree(10);
@@ -19,6 +21,11 @@ public class BinarySearchTree<E extends Comparable<E>> {
 		bv2.drawTree(bst2);
 	}
 
+	/**
+	 * 
+	 * @param nbrOfElements number of elements in created tree
+	 * @return a binary search tree with predefined strings
+	 */
 	public static BinarySearchTree<String> getDefaultStringTree(int nbrOfElements) {
 		BinarySearchTree<String> tempBst = new BinarySearchTree<>();
 		String[] strings = new String[] { "cat", "dog", "sun", "moon", "star", "blue", "red", "green", "tree", "bird",
@@ -28,7 +35,12 @@ public class BinarySearchTree<E extends Comparable<E>> {
 				"soft", "hard", "sky", "ball", "ship", "wave", "milk", "rose", "leaf", "cake", "jazz", "kite", "lamp",
 				"desk", "frog", "snow", "rain", "gold", "rice", "bean", "corn", "lime", "pear", "kiwi", "wolf", "bear",
 				"lion", "duck", "swan", "fish", "crab", "shark", "road", "path", "hill", "pond", "park", "shop", "town",
-				"city", "land", "farm", "wood", "rock", "clay", "sand", "dirt", "dust", "rust", "smog", "fog" };
+				"city", "land", "farm", "wood", "rock", "clay", "sand", "dirt", "dust", "rust", "smog", "fog", "leaf",
+				"frog", "mud", "nest", "horn", "moss", "twig", "dew", "seal", "crow", "hawk", "peak", "bark", "ant",
+				"bee", "wasp", "moth", "mite", "slug", "snail", "lamb", "calf", "foal", "hare", "lynx", "wolf", "bull",
+				"goat", "pige", "owl", "lark", "worm", "flea", "silk", "reed", "flax", "hemp", "rice", "maiz", "oats",
+				"rye", "wheat", "spelt", "yarn", "felt", "lace", "silk", "wool", "linen", "flax", "hemp", "cotton",
+				"denim", "twill", "satin", "velvet", "chiffon", "organza", "tulle" };
 		for (String string : strings) {
 			tempBst.add(string);
 			if (tempBst.size >= nbrOfElements)
@@ -37,6 +49,11 @@ public class BinarySearchTree<E extends Comparable<E>> {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @param nbrOfElements number of elements in created tree
+	 * @return a binary search tree with random integers
+	 */
 	public static BinarySearchTree<Integer> getRandomIntTree(int nbrOfElements) {
 		BinarySearchTree<Integer> tempBst = new BinarySearchTree<Integer>();
 		while (true) {
@@ -44,6 +61,19 @@ public class BinarySearchTree<E extends Comparable<E>> {
 			if (tempBst.size >= nbrOfElements)
 				return tempBst;
 		}
+	}
+
+	/**
+	 * 
+	 * @param nbrOfElements number of elements in created tree
+	 * @return a binary search tree with incremented integers
+	 */
+	public static BinarySearchTree<Integer> getIncementedIntTree(int nbrOfElements) {
+		BinarySearchTree<Integer> tempBst = new BinarySearchTree<Integer>();
+		for (int i = 0; i < nbrOfElements; i++) {
+			tempBst.add(i);
+		}
+		return tempBst;
 	}
 
 	/**
